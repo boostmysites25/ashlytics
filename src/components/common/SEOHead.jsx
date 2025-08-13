@@ -1,5 +1,4 @@
-import React from 'react';
-import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 const SEOHead = ({ 
   title, 
@@ -22,41 +21,75 @@ const SEOHead = ({
   const finalCanonical = canonical || defaultCanonical;
   const finalOgImage = ogImage || defaultOgImage;
 
-  return (
-    <Helmet>
-      {/* Primary Meta Tags */}
-      <title>{finalTitle}</title>
-      <meta name="title" content={finalTitle} />
-      <meta name="description" content={finalDescription} />
-      <meta name="keywords" content={finalKeywords} />
-      
-      {/* Canonical URL */}
-      <link rel="canonical" href={finalCanonical} />
-      
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content={ogType} />
-      <meta property="og:url" content={finalCanonical} />
-      <meta property="og:title" content={finalTitle} />
-      <meta property="og:description" content={finalDescription} />
-      <meta property="og:image" content={finalOgImage} />
-      <meta property="og:site_name" content="Ashlytics" />
-      <meta property="og:locale" content="en_US" />
-      
-      {/* Twitter */}
-      <meta property="twitter:card" content="summary_large_image" />
-      <meta property="twitter:url" content={finalCanonical} />
-      <meta property="twitter:title" content={finalTitle} />
-      <meta property="twitter:description" content={finalDescription} />
-      <meta property="twitter:image" content={finalOgImage} />
-      
-      {/* Structured Data */}
-      {structuredData && (
-        <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
-        </script>
-      )}
-    </Helmet>
-  );
+  useEffect(() => {
+    // Update document title
+    document.title = finalTitle;
+    
+    // Update meta tags
+    const updateMetaTag = (name, content) => {
+      let meta = document.querySelector(`meta[name="${name}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('name', name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    const updatePropertyMetaTag = (property, content) => {
+      let meta = document.querySelector(`meta[property="${property}"]`);
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute('property', property);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    // Update primary meta tags
+    updateMetaTag('title', finalTitle);
+    updateMetaTag('description', finalDescription);
+    updateMetaTag('keywords', finalKeywords);
+    
+    // Update canonical URL
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.setAttribute('href', finalCanonical);
+    
+    // Update Open Graph tags
+    updatePropertyMetaTag('og:type', ogType);
+    updatePropertyMetaTag('og:url', finalCanonical);
+    updatePropertyMetaTag('og:title', finalTitle);
+    updatePropertyMetaTag('og:description', finalDescription);
+    updatePropertyMetaTag('og:image', finalOgImage);
+    updatePropertyMetaTag('og:site_name', 'Ashlytics');
+    updatePropertyMetaTag('og:locale', 'en_US');
+    
+    // Update Twitter tags
+    updatePropertyMetaTag('twitter:card', 'summary_large_image');
+    updatePropertyMetaTag('twitter:url', finalCanonical);
+    updatePropertyMetaTag('twitter:title', finalTitle);
+    updatePropertyMetaTag('twitter:description', finalDescription);
+    updatePropertyMetaTag('twitter:image', finalOgImage);
+    
+    // Add structured data if provided
+    if (structuredData) {
+      let script = document.querySelector('script[type="application/ld+json"]');
+      if (!script) {
+        script = document.createElement('script');
+        script.setAttribute('type', 'application/ld+json');
+        document.head.appendChild(script);
+      }
+      script.textContent = JSON.stringify(structuredData);
+    }
+  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, finalOgImage, ogType, structuredData]);
+
+  // Return null since we're not rendering anything
+  return null;
 };
 
 export default SEOHead;
