@@ -6,10 +6,42 @@ import img4 from "../../assets/images/Partnership Beyond Projects.png";
 import { circleImg, futureGoals } from "../../content/constant";
 import Testimonials from "../../components/common/Testimonials";
 import ContactForm2 from "../../components/common/ContactForm2";
+import SEOHead from "../../components/common/SEOHead";
 
 const AboutUs = () => {
+  const aboutPageSEO = {
+    title: "About Ashlytics - Leading Web & Mobile App Development Company | Mumbai",
+    description: "Learn about Ashlytics, a leading web and mobile app development company in Mumbai. Discover our journey, expertise, and commitment to delivering exceptional digital solutions.",
+    keywords: "about Ashlytics, web development company Mumbai, mobile app development company, digital transformation company, software development Mumbai, IT company Mumbai",
+    canonical: "https://ashlytics.com/about-us",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Ashlytics",
+      "url": "https://ashlytics.com",
+      "logo": "https://ashlytics.com/logo.png",
+      "description": "Leading Web & Mobile App Development Company in Mumbai",
+      "foundingDate": "2024",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Flat No. 704, Wing No. 12, Swapnapurti, Jivlapada, Thakur Village, Kandivali East",
+        "addressLocality": "Mumbai",
+        "addressRegion": "Maharashtra",
+        "postalCode": "400101",
+        "addressCountry": "IN"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-7738900931",
+        "contactType": "customer service",
+        "email": "abc@example.com"
+      }
+    }
+  };
+
   return (
     <>
+      <SEOHead {...aboutPageSEO} />
       <section className="relative w-full aspect-video min-h-[60vh] max-h-[80vh]">
         <div className="absolute inset-0 h-full w-full bg-black/20 z-[-1]"></div>
         <img

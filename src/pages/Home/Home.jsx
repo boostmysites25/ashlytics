@@ -9,6 +9,7 @@ import gsap from "gsap";
 import robot from "../../assets/images/ai-robot.png";
 import ContactForm2 from "../../components/common/ContactForm2";
 import ReactPlayer from "react-player";
+import SEOHead from "../../components/common/SEOHead";
 
 export default function Home() {
   useEffect(() => {
@@ -26,8 +27,28 @@ export default function Home() {
     };
   }, []);
 
+  const homePageSEO = {
+    title: "Ashlytics - Web Development & Mobile App Development Services | Mumbai",
+    description: "Transform your business with cutting-edge web and mobile app development services in Mumbai. Ashlytics delivers exceptional digital solutions that drive growth and exceed expectations.",
+    keywords: "web development Mumbai, mobile app development Mumbai, e-commerce development, React Native, Flutter, iOS development, Android development, website design Mumbai, digital transformation, India",
+    canonical: "https://ashlytics.com/",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Ashlytics",
+      "url": "https://ashlytics.com",
+      "description": "Web Development & Mobile App Development Services in Mumbai",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ashlytics.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  };
+
   return (
     <>
+      <SEOHead {...homePageSEO} />
       <section className="min-h-screen flex flex-col justify-center relative">
         <ReactPlayer
           src={require("../../assets/videos/banner.mp4")}

@@ -5,10 +5,55 @@ import Faqs from "../../components/common/Faqs";
 import CTA from "../../components/common/CTA";
 import { ourServices } from "../../content/ourServices";
 import { createUrlParam } from "../../utils/helper";
+import SEOHead from "../../components/common/SEOHead";
 
 const Services = () => {
+  const servicesPageSEO = {
+    title: "Web Development & Mobile App Development Services | Ashlytics Mumbai",
+    description: "Comprehensive web development and mobile app development services in Mumbai. Custom websites, e-commerce platforms, iOS & Android apps, React Native, Flutter development.",
+    keywords: "web development services Mumbai, mobile app development services, custom website development, e-commerce development, React Native development, Flutter development, iOS app development, Android app development",
+    canonical: "https://ashlytics.com/services",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Web Development & Mobile App Development Services",
+      "description": "Comprehensive web and mobile app development services",
+      "provider": {
+        "@type": "Organization",
+        "name": "Ashlytics",
+        "url": "https://ashlytics.com"
+      },
+      "serviceType": ["Web Development", "Mobile App Development"],
+      "areaServed": {
+        "@type": "City",
+        "name": "Mumbai"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Development Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Web Development"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Mobile App Development"
+            }
+          }
+        ]
+      }
+    }
+  };
+
   return (
     <>
+      <SEOHead {...servicesPageSEO} />
       <section className="relative w-full aspect-video min-h-[60vh] max-h-[80vh]">
         <div className="absolute inset-0 h-full w-full bg-black/50 z-[-1]"></div>
         <img

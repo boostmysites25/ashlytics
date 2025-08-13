@@ -9,6 +9,7 @@ import { SpinnerContext } from "../../components/common/SpinnerContext";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+import SEOHead from "../../components/common/SEOHead";
 
 const ContactUs = () => {
   const { setLoading } = useContext(SpinnerContext);
@@ -27,6 +28,44 @@ const ContactUs = () => {
     },
     mode: "all",
   });
+
+  const contactPageSEO = {
+    title: "Contact Ashlytics - Web & Mobile App Development Company | Mumbai",
+    description: "Get in touch with Ashlytics for web development and mobile app development services in Mumbai. Call +91-7738900931 or email us for a free consultation.",
+    keywords: "contact Ashlytics, web development company contact, mobile app development contact, IT company Mumbai contact, software development contact",
+    canonical: "https://ashlytics.com/contact-us",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Ashlytics",
+      "description": "Contact information for Ashlytics web and mobile app development services",
+      "mainEntity": {
+        "@type": "Organization",
+        "name": "Ashlytics",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Flat No. 704, Wing No. 12, Swapnapurti, Jivlapada, Thakur Village, Kandivali East",
+          "addressLocality": "Mumbai",
+          "addressRegion": "Maharashtra",
+          "postalCode": "400101",
+          "addressCountry": "IN"
+        },
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+91-7738900931",
+            "contactType": "customer service",
+            "availableLanguage": "English"
+          },
+          {
+            "@type": "ContactPoint",
+            "email": "abc@example.com",
+            "contactType": "customer service"
+          }
+        ]
+      }
+    }
+  };
 
   const onSubmit = async (values) => {
     setLoading(true);
@@ -72,6 +111,7 @@ const ContactUs = () => {
   };
   return (
     <>
+      <SEOHead {...contactPageSEO} />
       <section className="relative w-full aspect-video min-h-[60vh] max-h-[80vh]">
         <div className="absolute inset-0 h-full w-full bg-black/30 z-[-1]"></div>
         <img
@@ -197,10 +237,10 @@ const ContactUs = () => {
             <h2 className="text1 text-primary">Get It Touch</h2>
             <div className="h-2 w-[18rem] bg-white"></div>
             <h5 className="text2">
-              Let’s Build Something Extraordinary Together!
+              Let's Build Something Extraordinary Together!
             </h5>
             <p className="desc">
-              Your website is more than an online presence—it’s a gateway to
+              Your website is more than an online presence—it's a gateway to
               success.
             </p>
             <div className="space-y-4">
