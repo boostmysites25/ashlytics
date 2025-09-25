@@ -70,7 +70,6 @@ const Blogs = () => {
             <div className="h-[40vh] flex items-center justify-center">
               <h3 className="text3">No blogs found</h3>
             </div>
-            {/* <div className="grid grid-cols-3 gap-7"></div> */}
           </div>
         </div>
       </section>

@@ -7,7 +7,8 @@ const SEOHead = ({
   canonical, 
   ogImage, 
   ogType = "website",
-  structuredData 
+  structuredData,
+  noindex = false
 }) => {
   const defaultTitle = "Ashlytics - Web Development & Mobile App Development Services";
   const defaultDescription = "Transform your business with cutting-edge web and mobile app development services. Ashlytics delivers exceptional digital solutions that drive growth and exceed expectations.";
@@ -51,6 +52,13 @@ const SEOHead = ({
     updateMetaTag('description', finalDescription);
     updateMetaTag('keywords', finalKeywords);
     
+    // Update robots meta tag
+    if (noindex) {
+      updateMetaTag('robots', 'noindex, nofollow');
+    } else {
+      updateMetaTag('robots', 'index, follow');
+    }
+    
     // Update canonical URL
     let canonicalLink = document.querySelector('link[rel="canonical"]');
     if (!canonicalLink) {
@@ -86,7 +94,7 @@ const SEOHead = ({
       }
       script.textContent = JSON.stringify(structuredData);
     }
-  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, finalOgImage, ogType, structuredData]);
+  }, [finalTitle, finalDescription, finalKeywords, finalCanonical, finalOgImage, ogType, structuredData, noindex]);
 
   // Return null since we're not rendering anything
   return null;

@@ -6,6 +6,7 @@ import OurExpertise from "./components/OurExpertise";
 import SolutionUseCases from "./components/SolutionUseCases";
 import { ourServices } from "../../content/ourServices";
 import { createUrlParam } from "../../utils/helper";
+import SEOHead from "../../components/common/SEOHead";
 
 const ServiceDetails = () => {
   const { param } = useParams();
@@ -21,8 +22,33 @@ const ServiceDetails = () => {
     title,
   } = data;
 
+  // Dynamic SEO data based on service
+  const servicePageSEO = {
+    title: `${title} Services | Ashlytics Mumbai - Professional Development`,
+    description: `Professional ${title.toLowerCase()} services in Mumbai. Expert development team delivering high-quality, scalable solutions for your business needs.`,
+    keywords: `${title.toLowerCase()}, ${title.toLowerCase()} services Mumbai, professional development, custom solutions, expert team`,
+    canonical: `https://ashlytics.com/services/${param}`,
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": title,
+      "description": `Professional ${title.toLowerCase()} services`,
+      "provider": {
+        "@type": "Organization",
+        "name": "Ashlytics",
+        "url": "https://ashlytics.com"
+      },
+      "serviceType": title,
+      "areaServed": {
+        "@type": "City",
+        "name": "Mumbai"
+      }
+    }
+  };
+
   return (
     <>
+      <SEOHead {...servicePageSEO} />
       <section className="relative w-full aspect-video min-h-[60vh] max-h-[80vh]">
         <div className="absolute inset-0 h-full w-full bg-black/30 z-[-1]"></div>
         <img

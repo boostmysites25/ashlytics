@@ -9,7 +9,7 @@ import { LuBrainCircuit } from "react-icons/lu";
 export { logo, circleImg, moonShapeImg };
 
 export const companyDetails = {
-  email: "abc@example.com",
+  email: "jigarashar01@gmail.com",
   location: "Flat No. 704, Wing No. 12, Swapnapurti, Jivlapada, Thakur Village, Kandivali East, Mumbai – 400101.",
   phone: "91-7738900931",
   whatsapp: "https://wa.me/917738900931",

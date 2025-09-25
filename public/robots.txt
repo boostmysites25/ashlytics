@@ -6,15 +6,31 @@ Allow: /
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
+Disallow: /thank-you
 
 # Allow all other pages
 Allow: /about-us
 Allow: /services
 Allow: /blogs
 Allow: /contact-us
+Allow: /web-development
+Allow: /app-development
+
+# Specific service pages
+Allow: /services/web-development
+Allow: /services/app-development
 
 # Sitemap location
 Sitemap: https://ashlytics.com/sitemap.xml
 
 # Crawl delay (optional)
+Crawl-delay: 1
+
+# Additional directives for better SEO
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
 Crawl-delay: 1
