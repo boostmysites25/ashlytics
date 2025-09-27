@@ -10,7 +10,7 @@ export { logo, circleImg, moonShapeImg };
 
 export const companyDetails = {
   email: "jigarashar01@gmail.com",
-  location: "Flat No. 704, Wing No. 12, Swapnapurti, Jivlapada, Thakur Village, Kandivali East, Mumbai – 400101.",
+  location: "Flat No. 704, Wing No. 12, Swapnapurti, Jivlapada, Thakur Village, Kandivali East, Mumbai - 400101.",
   phone: "91-7738900931",
   whatsapp: "https://wa.me/917738900931",
   instagram: "https://www.instagram.com/ash_lytics?igsh=MWtzMDE0Z2l0Nm1hYg==",
